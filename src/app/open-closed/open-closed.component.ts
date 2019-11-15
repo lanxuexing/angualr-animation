@@ -4,8 +4,17 @@ import { trigger, transition, state, animate, style, AnimationEvent } from '@ang
 @Component({
     selector: 'app-open-close',
     animations: [
+        /**
+         * trigger(name: string, definitions: AnimationMetadata[]): AnimationTriggerMetadata
+         * 创建一个命名动画触发器，其中包含state()列表和`transition()`条目，当表达式绑定到触发器更改。
+         *
+         * @param name标识字符串。
+         * @param definitions动画定义对象，包含一个state()数组和`transition()`声明。
+         *
+         * @return一个封装触发数据的对象。
+         *
+         */
         trigger('openClose', [
-            // ...
             state('open', style({
                 height: '200px',
                 opacity: 1,
@@ -17,6 +26,12 @@ import { trigger, transition, state, animate, style, AnimationEvent } from '@ang
                 backgroundColor: 'green'
             })),
             transition('open => closed', [
+                /**
+                 * animate ('duration delay easing')
+                 * duration（持续时间）是必须的
+                 * delay 的语法和 duration 一样
+                 * easing 控制动画在运行期间如何进行加速和减速。
+                 */
                 animate('1s')
             ]),
             transition('closed => open', [
